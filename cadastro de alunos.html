@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+	<head>
+		<title></title>
+		<script>
+			let alunos=[]
+
+			function exibeDados(indice){
+				document.getElementById("exibeNome").innerHTML=alunos[indice].nome;
+				document.getElementById("exibeTelefone").innerHTML=alunos[indice].telefone;
+				document.getElementById("exibeNascimento").innerHTML=alunos[indice].nascimento;
+				document.getElementById("exibeNota").innerHTML=alunos[indice].nota;
+			}
+
+			function incluiAluno(){
+				lista="";
+				for(let i=0;i<alunos.length;i++){
+					lista+="<p onclick='exibeDados("+i+")'>"+alunos[i].nome+"</p>";
+				}
+				document.getElementById("listaAlunos").innerHTML=lista;
+
+			}
+
+			function cadastraAluno(){
+				let aluno={nome:document.getElementById("cadastroNome").value,
+						   telefone:document.getElementById("cadastroTelefone").value,
+						   nascimento:document.getElementById("cadastroNascimento").value,
+						   nota:document.getElementById("cadastroNota").value,};
+				alunos.push(aluno);
+				incluiAluno();
+				document.getElementById("cadastroNome").value="";
+				document.getElementById("cadastroTelefone").value="";
+				document.getElementById("cadastroNascimento").value="";
+				document.getElementById("cadastroNota").value="";
+				//alert("Cadastro realizado!")
+			}
+
+		</script>
+	</head>
+	<body>
+		<div name="blocoCadastral" style="width:50%;float:left">
+			<div name="cadastroAlunos" id="blocoCadastro"><p>Dados Cadastrais:</p>
+				<p>Nome: <input id="cadastroNome"></p>
+				<p>Telefone: <input id="cadastroTelefone"></p>
+				<p>Nascimento: <input id="cadastroNascimento"></p>
+				<p>Nota final: <input id="cadastroNota"></p>
+				<br><button onclick="cadastraAluno()">Cadastrar Aluno</button>
+			</div><br><br><br>
+			<div name="listaDeAlunos" id="blocoLista"><p>Alunos Cadastrados</p>
+				<p id="listaAlunos"></p>
+
+			</div>
+		</div>
+
+		<div name="blocoInformativo" style="width:50%;float:left">
+			<p>Nome: <span id="exibeNome"></span></p>
+			<p>Telefone: <span id="exibeTelefone"></span></p>
+			<p>Nascimento: <span id="exibeNascimento"></span></p>
+			<p>Nota final: <span id="exibeNota"></span></p>
+		</div>
+	</body>
+</html>
