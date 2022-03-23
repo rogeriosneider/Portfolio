@@ -12,10 +12,16 @@
 				document.getElementById("exibeNota").innerHTML=alunos[indice].nota;
 			}
 
-			function incluiAluno(){
+			function removerAluno(indice){
+				alunos.splice(indice,1);
+				atualizaLista();
+
+			}
+
+			function atualizaLista(){
 				lista="";
 				for(let i=0;i<alunos.length;i++){
-					lista+="<p onclick='exibeDados("+i+")'>"+alunos[i].nome+"</p>";
+					lista+="<p onclick='exibeDados("+i+")'><button onclick='removerAluno("+i+")'>-</button>"+alunos[i].nome+"</p>";
 				}
 				document.getElementById("listaAlunos").innerHTML=lista;
 
@@ -27,7 +33,7 @@
 						   nascimento:document.getElementById("cadastroNascimento").value,
 						   nota:document.getElementById("cadastroNota").value,};
 				alunos.push(aluno);
-				incluiAluno();
+				atualizaLista();
 				document.getElementById("cadastroNome").value="";
 				document.getElementById("cadastroTelefone").value="";
 				document.getElementById("cadastroNascimento").value="";
