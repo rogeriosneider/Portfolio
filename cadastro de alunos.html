@@ -15,7 +15,6 @@
 			function removerAluno(indice){
 				alunos.splice(indice,1);
 				atualizaLista();
-
 			}
 
 			function atualizaLista(){
@@ -27,12 +26,17 @@
 
 			}
 
+			function ordena(a,b){
+				return (a.nome < b.nome)?-1:1;
+			}
+
 			function cadastraAluno(){
 				let aluno={nome:document.getElementById("cadastroNome").value,
 						   telefone:document.getElementById("cadastroTelefone").value,
 						   nascimento:document.getElementById("cadastroNascimento").value,
 						   nota:document.getElementById("cadastroNota").value,};
 				alunos.push(aluno);
+				alunos=alunos.sort(ordena);
 				atualizaLista();
 				document.getElementById("cadastroNome").value="";
 				document.getElementById("cadastroTelefone").value="";
