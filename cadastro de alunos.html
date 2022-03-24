@@ -6,21 +6,33 @@
 			let alunos=[]
 
 			function exibeDados(indice){
+				if (indice>=0){
 				document.getElementById("exibeNome").innerHTML=alunos[indice].nome;
 				document.getElementById("exibeTelefone").innerHTML=alunos[indice].telefone;
 				document.getElementById("exibeNascimento").innerHTML=alunos[indice].nascimento;
 				document.getElementById("exibeNota").innerHTML=alunos[indice].nota;
+				indicador=indice;
+				}
+				else;
+			}
+
+			function limpaExibe(){
+				document.getElementById("exibeNome").innerHTML="";
+				document.getElementById("exibeTelefone").innerHTML="";
+				document.getElementById("exibeNascimento").innerHTML="";
+				document.getElementById("exibeNota").innerHTML="";
 			}
 
 			function removerAluno(indice){
 				alunos.splice(indice,1);
 				atualizaLista();
+				limpaExibe();
 			}
 
 			function atualizaLista(){
 				lista="";
 				for(let i=0;i<alunos.length;i++){
-					lista+="<p onclick='exibeDados("+i+")'><button onclick='removerAluno("+i+")'>-</button>"+alunos[i].nome+"</p>";
+					lista+="<li><button onclick='removerAluno("+i+")'>-</button> <span onclick='exibeDados("+i+")'>"+alunos[i].nome+"</span></li>";
 				}
 				document.getElementById("listaAlunos").innerHTML=lista;
 
@@ -41,23 +53,31 @@
 				document.getElementById("cadastroNome").value="";
 				document.getElementById("cadastroTelefone").value="";
 				document.getElementById("cadastroNascimento").value="";
-				document.getElementById("cadastroNota").value="";
+				document.getElementById("cadastroNota").value="";;
 				//alert("Cadastro realizado!")
 			}
 
 		</script>
+		<style>
+			p {
+				line-height: 1;
+			}
+			input.tel{
+				
+			}
+		</style>
 	</head>
 	<body>
 		<div name="blocoCadastral" style="width:50%;float:left">
 			<div name="cadastroAlunos" id="blocoCadastro"><p>Dados Cadastrais:</p>
-				<p>Nome: <input id="cadastroNome"></p>
-				<p>Telefone: <input id="cadastroTelefone"></p>
-				<p>Nascimento: <input id="cadastroNascimento"></p>
-				<p>Nota final: <input id="cadastroNota"></p>
+				<p>Nome: <input id="cadastroNome" type=text placeholder="Nome do aluno"></p>
+				<p>Telefone: <input id="cadastroTelefone" type=tel placeholder="Telefone do aluno"></p>
+				<p>Nascimento: <input id="cadastroNascimento" type=date placeholder="Data de nascimento"></p>
+				<p>Nota final: <input id="cadastroNota" type=number placeholder="Nota final do aluno"></p>
 				<br><button onclick="cadastraAluno()">Cadastrar Aluno</button>
 			</div><br><br><br>
 			<div name="listaDeAlunos" id="blocoLista"><p>Alunos Cadastrados</p>
-				<p id="listaAlunos"></p>
+				<list id="listaAlunos"></list>
 
 			</div>
 		</div>
