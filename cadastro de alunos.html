@@ -35,7 +35,6 @@
 					lista+="<li><button onclick='removerAluno("+i+")'>-</button> <span onclick='exibeDados("+i+")'>"+alunos[i].nome+"</span></li>";
 				}
 				document.getElementById("listaAlunos").innerHTML=lista;
-
 			}
 
 			function ordena(a,b){
@@ -53,18 +52,13 @@
 				document.getElementById("cadastroNome").value="";
 				document.getElementById("cadastroTelefone").value="";
 				document.getElementById("cadastroNascimento").value="";
-				document.getElementById("cadastroNota").value="";;
-				//alert("Cadastro realizado!")
+				document.getElementById("cadastroNota").value="";
 			}
 
 		</script>
 		<style>
-			p {
-				line-height: 1;
-			}
-			input.tel{
-				
-			}
+			/*p.class{}
+			p#ID{}*/
 		</style>
 	</head>
 	<body>
@@ -82,7 +76,7 @@
 			</div>
 		</div>
 
-		<div name="blocoInformativo" style="width:50%;float:left">
+		<div name="blocoInformativo" style="width:50%;float:right">
 			<p>Nome: <span id="exibeNome"></span></p>
 			<p>Telefone: <span id="exibeTelefone"></span></p>
 			<p>Nascimento: <span id="exibeNascimento"></span></p>
